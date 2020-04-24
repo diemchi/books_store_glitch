@@ -1,0 +1,29 @@
+
+form(action="/books/create", method="POST")
+  input(type="text", name="id", hidden)
+  label(style="margin:0 10px 10px 0; display: inline-block;") Tiêu đề sách:
+  input(type="text", name="title")
+  br
+  label(style="margin:0 10px 5px 0; display: inline-block;") Mô tả sách:
+  br
+  textarea(type="text", name="description", rows="4", cols="50")
+  br
+  button(style="margin-top: 10px;")  Thêm sách
+  
+h3(style="color:#cc0000; text-transform:uppercase") List books of your bookstore
+
+table(style="border:1px solid #DDD")
+  tr
+    th(style="background-color:#cecece; border:1px solid #DDD") STT
+    th(style="background-color:#cecece; border:1px solid #DDD; min-width: 200px;") Tiêu đề sách
+    th(style="background-color:#cecece; border:1px solid #DDD") Mô tả sách
+    th(style="background-color:#cecece; border:1px solid #DDD") Thao tác
+  each book in books
+    tr(style="border:1px solid #DDD; height: 60px")
+      td(style="border:1px solid #DDD")= book.id
+      td(style="border:1px solid #DDD")= book.title
+      td(style="border:1px solid #DDD; overflow: hidden; text-overflow: ellipsis; line-height: 20px; -webkit-line-clamp: 3; max-height: 60px; display: -webkit-box; -webkit-box-orient: vertical;")= book.description
+      td(style="border:1px solid #DDD")
+        a(href="/books/"+ book.id +"/edit", style="padding: 10px 15px; background-color: #28a745; color: #fff; margin:0 10px; border-radius:5px; text-decoration:none") Sửa
+        a(href="/books/"+ book.id +"/delete", style="padding: 10px 15px; background-color: #c82333; color: #fff; margin-right:10px; border-radius:5px; text-decoration:none") Xóa
+        

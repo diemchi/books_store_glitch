@@ -1,0 +1,14 @@
+h3 Sửa thông tin sách
+
+form(action="/books/save_edit", method="POST")
+  each item in book_edit
+    input(type="text", name="id", value=item.id, hidden)
+    label(style="margin:0 10px 10px 0; display: inline-block;") Tiêu đề sách:
+    input(type="text", name="title", value=item.title)
+    br
+    label(style="margin:0 10px 5px 0; display: inline-block;") Mô tả sách:
+    br
+    textarea(type="text", name="description", rows="8", cols="50")=item.description
+    br
+    button(type="submit" , style="margin-top: 10px;")  Lưu cập nhật
+    a(href="/books", style="text-decoration:none; display:inline-block; margin-left:15px;") Hủy bỏ
